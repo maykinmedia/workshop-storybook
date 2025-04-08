@@ -1,3 +1,130 @@
 import {Meta} from '@storybook/blocks';
 
-<Meta title="Writing stories" />
+<Meta title="Writing stories" name="README" />
+
+# Writing stories
+
+A story is a single state/snapshot/configuration of a component, defined in Storybook.
+
+Users can interact with it (if it's interactive), or change controls in Storybook to
+change the state/representation.
+
+## Story files
+
+Storybook discovers stories based on file name: `{someName}.stories.{ext}`. We'll be using
+typescript, so the extension will be `ts` or `tsx`. As long as the file is in the `src`
+directory, it will be discovered.
+
+**Open `src/003-writing-stories/index.stories.tsx` and check the contents.**
+
+## Story file content: meta
+
+Each story file needs some meta-information to know where it will be available in the
+navbar. Additionally, a number of defaults can be provided to help with automated
+documentation etc. More elaborate stuff about this in "Args, parameters and decorators"!
+
+For now, the minimum we need is a title:
+
+```tsx
+import type {Meta} from '@storybook/react';
+
+interface Args {}
+
+export default {
+    title: 'Writing stories',
+} satisfies Meta<Args>;
+```
+
+The `default` export is used as meta for the stories.
+
+## Story file content: stories
+
+And second, the stories are what we are interested in the most - they show our UI components.
+
+Each named export is considered a story and will  be picked up by storybook. It
+automatically creates the name from the export and you usually have to specify very little:
+
+```tsx
+import type {StoryObj} from '@storybook/react';
+
+interface Args {}
+
+type Story = StoryObj<Args>;
+
+export const RenderFunction: Story = {
+    render: () => <>I am a render function!</>,
+}
+```
+
+## Args and render function
+
+`args` in Storybook are (some of) the variables that control what is displayed. Don't
+worry - it will become more clear. We use Typescript, so we can describe which variables
+are supported.
+
+A story needs to be rendered. There are many automatic things for this, but for now we
+start with a `render` function. Storybook will call the `render` function, and any
+`args` defined will be passed to it. The example above is not interactive at all and
+defines just a simple fixed render function. Because we use the React framework, it must
+return React components to render.
+
+In the component meta, you can specify default args that apply to all stories. On a
+per-story basis you can override these. By default, Storybook creates "controls" for
+each `arg`.
+
+## Rendering stories: tasks
+
+**Ah yes. The doing. Of the thing.**
+
+### 1. Finish the `Render Function With Args` story
+
+1. Inspect the story
+2. Inspect what `args` looks like
+3. Update the render function so that the `name` is displayed
+4. Interact with the controls
+
+### 2. Finish the `RenderGreeting` story
+
+There is a `Greeting` component defined, which you can render with:
+
+```tsx
+<Greeting fullName="Pomme de Terre" />
+````
+
+1. Update the `RenderGreeting` story to render the Greeting component.
+2. Make sure the `name` arg is passed down to the component.
+3. Interact with the name control and see how the greeting changes.
+
+## Reducing boilerplate - specifying `component`
+
+Specifying a render function every time is repetitive, especially considering all stories
+in a file *should* be about the same component.
+
+A `render` function is the exception rather than the norm - it can be useful if you need
+special wrapping or careful control of args, but often there are better solutions (see
+parameters and decorators later).
+
+Storybook is aware of React components - and in particular the `props` a component takes.
+By default, a render function is generated from the `component` and any `args` are passed
+down to the component as `props`. Typescript helps here with autocomplete and checking
+that you do the correct thing.
+
+## Component stories: tasks
+
+### 1. Finish the setup in `02-component.stories.tsx`
+
+1. Open the file
+2. Uncomment the `component` definition
+3. Check the rendered story
+4. Uncomment the `fullName` arg in the meta
+5. Check the rendered story
+6. Interact with the controls
+7. Try defining a different value for the arg at the story level
+
+### 2. Extend the component and story
+
+1. Open `Greeting.tsx`
+2. Add an additional prop (you can think of something!)
+3. Add a new story and provide an `arg` for this new prop
+
+Bonus points for picking a prop that is *not* a string!

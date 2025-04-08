@@ -1,25 +1,22 @@
 {
-  "name": "@maykinmedia/workshop-storybook",
+  "name": "workshop-storybook",
   "private": true,
-  "version": "0.1.0",
-  "description": "Workshop to get started with Storybook",
-  "keywords": [
-    "storybook",
-    "workshop"
-  ],
-  "homepage": "https://github.com/maykinmedia/workshop-storybook#readme",
-  "bugs": {
-    "url": "https://github.com/maykinmedia/workshop-storybook/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maykinmedia/workshop-storybook.git"
-  },
-  "license": "UNLICENSED",
-  "author": "Sergei Maertens <sergei@maykinmedia.nl>",
+  "version": "0.0.0",
   "type": "module",
-  "main": "storybook-static/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
   }
 }

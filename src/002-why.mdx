@@ -1,0 +1,69 @@
+import {Meta} from '@storybook/blocks';
+
+<Meta title="Why use it?" />
+
+# Why use Storybook?
+
+## Isolation
+
+* Developing components in isolation helps enforce loose coupling / composition
+* Iterate/develop on (incomplete) features quickly without breaking `main`
+
+    - Develop/compose components in their intended use case
+    - Hook everything up to your main app when you're ready
+
+* No need to click through cumbersome interactions over and over again to test a small
+  thing
+
+## Accessibility
+
+* Plugins can do automated accessibility checking/auditing
+* Interaction tests: uses testing-library under the hood, which favours accessible queries
+* Ready to use addons for colour blindness simulation, viewports, light/dark mode...
+
+## Sharing
+
+* Static HTML/JS/CSS build -> easy to deploy on github pages
+* With Chromatic: automated build for each pull request: quickly test the changes when
+  reviewing a PR without needing to check out everything locally
+* Demo/checking with developers by looking at just the stories with only the necessary
+  context
+* (Publicly) deploy your storybook for easy-to-find (and host) documentation, reference,
+  exchange ideas
+* Get user feedback from testers interacting with stories
+
+## Automated (visual) testing
+
+* Chromatic makes snapshots of each story & compares before + after for each PR.
+  [Example](https://www.chromatic.com/build?appId=634043ae879dc17405b0e567&number=1764)
+* Interaction tests are executed by Chromatic
+* or run interaction tests in Github actions CI pipeline
+
+## Documentation - component library / intended usage
+
+* MDX: ease of use of Markdown + expressiveness/interaction of JSX/React
+* Documentation co-located with the code/component
+* Easy to document intended uses, backing research... (example: date field in OF SDK)
+* Autodocs feature, combined with Typescript & JS docblocks is very powerful (almost
+  similar to Sphinx autodoc)
+
+## Developer experience
+
+* Automation
+* Rich ecosystem of addons (plugins):
+
+    - react-intl for i18n
+    - MSW for API mocking
+    - react-router (SPA routing library)
+    - playwright-based tests (experimental)
+
+* Auto-reload: very fast feedback loop
+
+## Drawbacks
+
+* Steep learning curve
+* Lots of dependencies
+* More complicated build toolchain/pipeline
+* Test flakiness is a thing sometimes :(
+* JS ecosystem is still fast moving
+* SB maintainers like major versions (= breaking changes)

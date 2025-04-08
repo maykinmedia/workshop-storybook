@@ -1,3 +1,27 @@
 import {Meta} from '@storybook/blocks';
 
 <Meta title="More about stories / ArgTypes, parameters and decorators" />
+
+# Args and other concepts
+
+While `args` are directly passed to the story render function, there are more
+concepts involved in rendering a story:
+
+* `argTypes`
+* `decorators`
+* `parameters`
+
+Some of these are bundled/provided in the "story context" to other functionalities
+in storybook, or they work well together.
+
+## `argTypes`
+
+`argTypes` typically influence two common aspects of stories:
+
+* the controls table
+* the args table rendered in documentation
+
+You typically use them to polish what storybook exposes/documents if the automatically
+inferred information from the component is not detailed enough or not very practical.
+
+### Tasks

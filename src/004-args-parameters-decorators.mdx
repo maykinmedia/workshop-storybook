@@ -24,4 +24,76 @@ in storybook, or they work well together.
 You typically use them to polish what storybook exposes/documents if the automatically
 inferred information from the component is not detailed enough or not very practical.
 
-### Tasks
+### Tasks: `argTypes`
+
+#### 1. Inspect the controls and docs
+
+1. Inspect the controls for the stories - pay attention to the `title` and `children`
+   props.
+2. Check the `Card` component type definitions of `title` and `children`.
+3. Can you explain what SB does for the controls?
+4. Check the docs page - focus on the controls table below the default story.
+
+#### 2. Tweak controls
+
+1. Open `01-argTypes.stories.tsx`
+2. Play around with the commented `argTypes` and check their effect.
+3. Check `Card.mdx` and the "Manual docs" to see the `argTypes` effects.
+
+See the [Storybook docs](https://storybook.js.org/docs/essentials/controls) for more
+advanced use cases.
+
+## `decorators`
+
+Decorators are the same concept as they are in plain Javascript or Python code - they
+wrap the thing they decorate and modify the behaviour in some way.
+
+In storybook, decorators wrap around the story - you can use them to provide more
+representative context while still primarily documenting the component/story in
+isolation.
+
+Common uses are:
+
+* Setting up some necessary React context (provider) (e.g. react-intl, Formik, theme...)
+* Wrapping the component in its (expected) modal container
+
+Decorators receive the `Story` as argument, and the story context, containing the `args`,
+`parameters`... amongst others, for example:
+
+```tsx
+const withSomeDecorator = (Story, {args}) => (
+    <div style={{backgroundColor: args.backgroundColor}}>
+        <Story />
+    </div>
+);
+```
+
+If you specify a story arg `backgroundColor`, then it will be applied to the wrapper div.
+
+### Tasks: `decorators`
+
+#### 1. Implement a decorator that renders stories in a card
+
+For this, we can re-use our `Greeting` and `Card` components. The code is in
+`02-decorators.stories.tsx`. The stories are `Greeting` component stories.
+
+1. Open the stories file
+2. Finish the implementation of `withCard`
+
+    * For now, consider a hardcoded title
+    * You can also decide on a fixed appearance. Tip: `modifiers` prop!
+3. Check the controls
+
+#### 2. Make it fancy: add args for the card
+
+It would be cool if you can be interactive even on the card to play around with things.
+Let's make the card title and appearance controllable in storybook.
+
+1. Use the `FancyDecorator` story and the `fancyWithCard` decorator
+2. Finish the implementation
+
+    * Make it possible to pass an extra `arg` with the name `cardTitle` that becomes the
+      card title. Ensure you can change the value in the Storybook UI.
+    * Translate the `isPadded` and `hasShadow` args into their Card-component-specific
+       meaning
+    * It's recommended to leverage the `Args` interface here for type safety!

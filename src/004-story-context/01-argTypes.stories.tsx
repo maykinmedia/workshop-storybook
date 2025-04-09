@@ -9,7 +9,13 @@ export default {
         children: <p>A JSX body, which looks quite horrible with the default controls.</p>,
     },
     argTypes: {
-
+        // children: {control: {disable: true}},
+        // children: {control: 'text'},
+        // modifiers: {
+        //     control: {type: 'check'},
+        //     options: ['padded', 'shadow', 'compact'],
+        // },
+        // ignoredInArgTypesMDX: {table: {disable: true}},
     },
     tags: ['autodocs'],
 } satisfies Meta<typeof Card>;

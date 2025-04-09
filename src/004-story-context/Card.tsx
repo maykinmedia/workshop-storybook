@@ -1,7 +1,17 @@
 export interface CardProps {
+    /**
+     * Title displayed at the top
+     */
     title: React.ReactNode;
+    /**
+     * Body content
+     */
     children: React.ReactNode;
+    /**
+     * Appearance modifiers
+     */
     modifiers?: Array<'padded' | 'shadow' | 'compact'>;
+    ignoredInArgTypesMDX?: false;
 }
 
 const Card: React.FC<CardProps> = ({title, children, modifiers = []}) => {

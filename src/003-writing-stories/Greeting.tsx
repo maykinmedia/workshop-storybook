@@ -4,7 +4,7 @@ export interface GreetingProps {
 
 const Greeting: React.FC<GreetingProps> = ({fullName}) => (
     <div>
-        <h1>Hi {fullName}</h1>
+        <h3>Hi {fullName}</h3>
         <p>Don't forget to hydrate!</p>
     </div>
 );

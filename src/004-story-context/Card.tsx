@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({title, children, modifiers = []}) => {
             border: 'solid 1px rgba(0, 0, 0, 0.25)',
             boxShadow: withShadow ? '2px 2px 5px 0 rgba(0, 0, 0, 0.2)' : undefined,
         }}>
-            <h1>{title}</h1>
+            <h2>{title}</h2>
             <div>
                 {children}
             </div>

@@ -1,3 +1,38 @@
 import {Meta} from '@storybook/blocks';
 
-<Meta title="Advanced / Interaction tests" />
+<Meta title="Advanced / Interaction tests" name="README" />
+
+# Interaction testing
+
+Storybook has `play` functions, which use [testing-library](https://testing-library.com/)
+under the hood. You can simulate realistic user interactions with this.
+
+Compared to Jest/Vitest (unit) tests:
+
+* runs in a real browser
+* easier debugging because you can inspect the state
+* Panel in SB UI displays the steps and allows you to go back/forward
+* drawback: weird edge cases with auto-reload and focus state
+
+An interaction test typically looks like:
+
+```tsx
+const MyStory: {
+    play: async ({canvasElement}) => {
+        const canvas = within(canvasElement);
+
+        const button = await canvas.findByRole('button', {name: 'Confirm'});
+        expect(button).toBeVisible();
+
+        await userEvent.click(button);
+        expect(await canvas.findByRole('link', {name: 'A dynamically displayed link'})).toBeVisible();
+    };
+}
+```
+
+* Accessible "queries" (`*ByRole`) ensure that accessibility is a first class feature
+* Abstractions for user interactions
+* Assertions via `expect` with knowledge about the DOM
+* Easy mocks/spies
+
+## Tasks

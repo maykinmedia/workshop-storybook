@@ -59,6 +59,10 @@ const Form: React.FC<FormProps> = ({onSubmit}) => {
                         style={{padding: '.4em'}}
                     />
                 </FormRow>
+
+                <button type="submit" style={{alignSelf: 'start', padding: '1em'}}>
+                    <strong>Submit the form</strong>
+                </button>
             </form>
 
             {

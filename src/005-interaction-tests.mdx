@@ -18,7 +18,7 @@ An interaction test typically looks like:
 
 ```tsx
 const MyStory: {
-    play: async ({canvasElement}) => {
+    play: async ({canvasElement, ...context}) => {
         const canvas = within(canvasElement);
 
         const button = await canvas.findByRole('button', {name: 'Confirm'});
@@ -36,3 +36,33 @@ const MyStory: {
 * Easy mocks/spies
 
 ## Tasks
+
+### 1. Submit the form
+
+1. Open `Form.stories.ts` and locate the `SubmitForm` story
+2. Implement the interaction test to click the submit button
+3. Check the "Interactions" panel in the Storybook UI
+4. Inspect the "Actins" panel in the Storybook UI
+
+### 2. Improve test assertions
+
+1. Continue in the same story
+2. Check the `onSubmit` arg
+3. Add an assertion that the `onSubmit` handler was called with the entered form values
+
+    * Tip: `expect(...).toHaveBeenCalledWith`
+    * Tip: the `play` function recceives _story context_
+
+
+### 3. Interact with form inputs
+
+1. Locate the `TypeInInputs` story
+2. Interact with the `name` input from the test
+
+    * Change the input value
+    * Assert that the input value is reflected in the preview
+
+3. Interact with the amount input from the test
+
+    * Change the amount of items
+    * Assert on the effect of changing the number

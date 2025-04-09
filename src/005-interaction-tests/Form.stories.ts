@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import {expect, fn, within} from '@storybook/test';
+import {expect, fn, userEvent, within} from '@storybook/test';
 
 import Form from './Form';
 
@@ -13,7 +13,15 @@ export default {
 
 type Story = StoryObj<typeof Form>;
 
-export const InteractionTests: Story = {
+export const SubmitForm: Story = {
+    play: async ({canvasElement}) => {
+        const canvas = within(canvasElement);
+
+        // implement me!
+    },
+};
+
+export const TypeInInputs: Story = {
     play: async ({canvasElement}) => {
         const canvas = within(canvasElement);
 

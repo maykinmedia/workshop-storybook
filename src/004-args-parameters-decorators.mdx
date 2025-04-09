@@ -97,3 +97,30 @@ Let's make the card title and appearance controllable in storybook.
     * Translate the `isPadded` and `hasShadow` args into their Card-component-specific
        meaning
     * It's recommended to leverage the `Args` interface here for type safety!
+
+3. Bonus: apply the `argTypes` knowledge for nice controls!
+
+## `parameters`
+
+Similar to args, you can pass values, but they are never added to the controls. Excellent
+for setting up some context/state under the hood that your story needs, but isn't directly
+relevant for the story itself.
+
+Examples:
+
+* React router location
+* Formik values/errors state
+* MSW mock handlers (see later)
+* Configuration context (e.g. theme, locale...)
+
+There is some potential overlap with addons that add to the toolbar, like:
+
+* theme
+* react-intl language/locale
+* viewports
+
+### Task: use parameters instead of args for the fancy decorator
+
+1. Complete `FancyDecoratorWithParameters` so that the appearance of the card is
+   parametrized but only via code
+2. Ensure that only the `fullName` control is available

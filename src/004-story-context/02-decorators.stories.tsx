@@ -11,7 +11,7 @@ interface Args extends React.ComponentPropsWithoutRef<typeof Greeting> {
 const withCard: Decorator<Args> = () => <div>TODO</div>;
 
 export default {
-    title: 'More about stories / decorators',
+    title: 'More about stories / decorators & parameters',
     component: Greeting,
     args: {
         fullName: 'Perry the Platypus',
@@ -33,5 +33,20 @@ export const FancyDecorator: Story = {
         cardTitle: 'A controllable title',
         isPadded: true,
         hasShadow: true,
+    },
+};
+
+// Implement me!
+const withCardParameters: Decorator<React.ComponentPropsWithoutRef<typeof Greeting>> = () => (
+    <div>TODO</div>
+);
+
+export const FancyDecoratorParameters: Story = {
+    decorators: [withCardParameters],
+    parameters: {
+        card: {
+            title: 'Card title via parameters',
+            modifiers: ['padded', 'shadow'],
+        },
     },
 };
